@@ -16,3 +16,4 @@ class RecoveryPasswordPage(BasePage):
         self.wait_and_find_element(RecoveryPasswordPageLocators.NEW_PASSWORD_FIELD).send_keys(password)
 
     @allure.title('')
+    def
