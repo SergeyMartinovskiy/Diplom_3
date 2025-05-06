@@ -15,5 +15,7 @@ class RecoveryPasswordPage(BasePage):
     def fill_field_new_password(self, password):
         self.wait_and_find_element(RecoveryPasswordPageLocators.NEW_PASSWORD_FIELD).send_keys(password)
 
-    @allure.title('')
-    def
+    @allure.title('Клик по элементу в виде глаза для разблюривания пароля')
+    def click_to_show_hiding_passsword(self):
+        self.wait_and_find_element(RecoveryPasswordPageLocators.EYE_BUTTON).click_element()
+
