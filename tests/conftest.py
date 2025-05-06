@@ -1,13 +1,17 @@
 import pytest
 from selenium import webdriver
 from urls import Main_URL
+from selenium.webdriver.chrome.options import Options
 
 @pytest.fixture(params = ['chrome', 'firefox'])
 def driver(request):
     if request.param == 'chrome':
-        driver = webdriver.Chrome()
+        options = Options()
+        driver = webdriver.Chrome(options=options)
+
     elif request.param == 'firefox':
-        driver = webdriver.Firefox()
+        options = webdriver.FirefoxOptions()
+        driver = webdriver.Firefox(options=options)
 
     driver.get(Main_URL)
     yield driver

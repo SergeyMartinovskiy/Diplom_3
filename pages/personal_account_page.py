@@ -16,19 +16,19 @@ class PersonalAccountPage(BasePage):
 
     @allure.title('Авторизция нажатием кнопки Войти')
     def click_enter_button(self):
-        self.wait_and_find_element(PersonalAccountPageLocators.ENTER_BUTTON).click_element()
+        self.wait_and_find_element(PersonalAccountPageLocators.ENTER_BUTTON).click()
 
     @allure.title('Клик по надписи Профиль в личном кабинете')
     def click_profile_button(self):
-        self.wait_and_find_element(PersonalAccountPageLocators.PROFILE_BUTTON).click_element()
+        self.wait_and_find_element(PersonalAccountPageLocators.PROFILE_BUTTON).click()
 
     @allure.title('Клик по надписи История заказов в личном кабинете')
     def click_order_history_button(self):
-        self.wait_and_find_element(PersonalAccountPageLocators.ORDER_HISTORY_BUTTON).click_element()
+        self.wait_and_find_element(PersonalAccountPageLocators.ORDER_HISTORY_BUTTON).click()
 
     @allure.title('Клик по кнопке Выход в личном кабинете')
     def click_exit_button(self):
-        self.wait_and_find_element(PersonalAccountPageLocators.EXIT_BUTTON).click_button()
+        self.wait_and_find_element(PersonalAccountPageLocators.EXIT_BUTTON).click()
 
     @allure.title('Получение номера последнего заказа')
     def get_last_number_order(self):
@@ -36,6 +36,6 @@ class PersonalAccountPage(BasePage):
 
     @allure.title('Клик по кнопке Восстановить пароль')
     def click_recovery_password_button(self):
-        self.wait_and_find_element(PersonalAccountPageLocators.RECOVERY_PASSWORD_BUTTON).click_element()
+        self.wait_and_find_element(PersonalAccountPageLocators.RECOVERY_PASSWORD_BUTTON).click()
 
 

@@ -5,7 +5,7 @@ from pages.base_page import BasePage
 class RecoveryPasswordPage(BasePage):
     @allure.title('Клик по кнопке Восстановить')
     def click_recovery_button(self):
-        self.wait_and_find_element(RecoveryPasswordPageLocators.RECOVERY_BUTTON).click_element()
+        self.wait_and_click_element(RecoveryPasswordPageLocators.RECOVERY_BUTTON)
 
     @allure.title('Заполнение поля email')
     def fill_field_email(self, email):
@@ -17,5 +17,5 @@ class RecoveryPasswordPage(BasePage):
 
     @allure.title('Клик по элементу в виде глаза для разблюривания пароля')
     def click_to_show_hiding_passsword(self):
-        self.wait_and_find_element(RecoveryPasswordPageLocators.EYE_BUTTON).click_element()
+        self.wait_and_find_element(RecoveryPasswordPageLocators.EYE_BUTTON).click()
 
