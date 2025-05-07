@@ -31,3 +31,8 @@ class BasePage:
             modal_close_button.click()
         except TimeoutException:
             pass
+
+    def compare_urls(self, expected_url: str) -> bool:
+        current_url = self.driver.current_url
+        return current_url == expected_url
+
