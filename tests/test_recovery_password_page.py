@@ -1,4 +1,4 @@
-
+import data
 from pages.main_page import MainPage
 from pages.personal_account_page import PersonalAccountPage
 from pages.recovery_password_page import RecoveryPasswordPage
@@ -16,4 +16,15 @@ class TestRecoveryPasswordPage:
         recovery_page = RecoveryPasswordPage(driver)
         assert recovery_page.wait_and_find_element(RecoveryPasswordPageLocators.TITLE_RECOVERY_PAGE).text == 'Восстановление пароля'
 
+    @allure.title('Проверка перехода на страницу Восстановления пароля - ввод почты и клик по кнопке Восстановить')
+    def test_transfer_enter_email_and_click_recovery_button(self, driver):
+        main_page = MainPage(driver)
+        main_page.open_start_window()
+        main_page.click_personal_account_button()
+        account_page = PersonalAccountPage(driver)
+        account_page.click_recovery_password_button()
+        recovery_page = RecoveryPasswordPage(driver)
+        recovery_page.fill_field_email(data.email)
+        recovery_page.click_recovery_button()
+        assert recovery_page.wait_and_find_element(RecoveryPasswordPageLocators.TITLE_RECOVERY_PAGE).text == 'Восстановление пароля'
 
