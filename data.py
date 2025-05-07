@@ -3,6 +3,7 @@ user_name = 'Sergey'
 password = '123456'
 email = 'Sergey_Martinovsky_15_007@yandex.ru'
 invalid_password = '6789'
+new_password = '654321'
 
 import random
 
