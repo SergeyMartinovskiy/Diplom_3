@@ -48,10 +48,9 @@ class TestMainPageFunction:
         main_page.open_start_window()
         main_page.close_modal_if_open()
         main_page.add_bun_to_order_busket()
+        main_page.close_modal_if_open()
 
         assert main_page.wait_and_find_element(MainPageLocators.COUNT_FLUOR_BUN_AFTER_ADD).text == '2'
-
-
 
 
 

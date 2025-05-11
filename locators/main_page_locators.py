@@ -12,7 +12,7 @@ class MainPageLocators:
     DETAILS_INGREDIENT_FLUOR_BUN = (By.XPATH, "//p[@class='text text_type_main-medium mb-8']")
     X_BUTTON_POP_UP_WINDOW_DET_INGRED = (By.XPATH, "//section[@class='Modal_modal_opened__3ISw4 Modal_modal__P3_V5']//button[@type='button']//*[name()='svg']//*[name()='path' and contains(@fill-rule,'evenodd')]")
 
-    ORDER_BUSKET =(By.XPATH, ".//ul[contains(@class, 'BurgerConstructor_basket__list')]")
+    ORDER_BUSKET =(By.XPATH, './/ul[contains(@class, "BurgerConstructor_basket__list__l9dp_")]')
     COUNT_FLUOR_BUN_AFTER_ADD = (By.XPATH, "//p[normalize-space()='2']")
 
 

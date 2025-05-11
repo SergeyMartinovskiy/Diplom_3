@@ -23,12 +23,9 @@ class MainPage(BasePage):
     def add_bun_to_order_busket(self):
         bun_element = self.wait_and_find_element(MainPageLocators.FLUOR_BUN_BUTTON)
         basket_element = self.wait_and_find_element(MainPageLocators.ORDER_BUSKET)
-        self.close_modal_if_open()
         action_chains = ActionChains(self.driver)
-        action_chains.drag_and_drop(bun_element, basket_element).perform()
-        timeout = 20 if "firefox" in self.driver.capabilities['browserName'].lower() else 10
-        WebDriverWait(self.driver, timeout).until(EC.visibility_of_element_located(MainPageLocators.COUNT_FLUOR_BUN_AFTER_ADD))
-        time.sleep(2)
+        action_chains.click_and_hold(bun_element).pause(1).move_to_element(basket_element).pause(1).release().perform()
+
 
 
 
