@@ -17,5 +17,8 @@ class MainPageLocators:
     BUTTON_ORDER = (By.XPATH, "//button[contains(text(),'Оформить заказ')]")
     TITLE_CONFIRM_ORDER = (By.XPATH, "//p[text()='Ваш заказ начали готовить']")
 
+    ORDER_HISTORY_BUTTON = (By.XPATH, "//a[contains(text(),'История заказов')]")
+    NUMBER_ORDER_IN_HISTORY = (By.XPATH, "//p[@class = text text_type_digits-default")
+
 
 

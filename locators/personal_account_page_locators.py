@@ -12,6 +12,7 @@ class PersonalAccountPageLocators:
     HEADING_MAIN_PAGE = (By.XPATH, "//h1[contains(text(),'Соберите бургер')]")
     RECOVERY_PASSWORD_BUTTON = (By.XPATH, '//a[contains(text(),"Восстановить пароль")]')
     LAST_ORDER_NUMBER_IN_HISTORY = (By.XPATH, "//p[@class='text text_type_digits-default']")
+    ORDER_NUMBER_IN_HISTORY = (By.XPATH, "(//p[contains(@class, 'text text_type_digits-default')])[1]")
 
 
 
