@@ -2,9 +2,9 @@ import allure
 from data import *
 from pages.main_page import MainPage
 from locators.main_page_locators import MainPageLocators
-
-
-
+from pages.personal_account_page import PersonalAccountPage
+from locators.personal_account_page_locators import PersonalAccountPageLocators
+import data
 
 class TestMainPageFunction:
     @allure.title('Переход по клику на кнопку Конструктор')
@@ -49,8 +49,26 @@ class TestMainPageFunction:
         main_page.close_modal_if_open()
         main_page.add_bun_to_order_busket()
         main_page.close_modal_if_open()
-
         assert main_page.wait_and_find_element(MainPageLocators.COUNT_FLUOR_BUN_AFTER_ADD).text == '2'
+
+    @allure.title('Проверка возможности оформления заказа залогиненным пользователем')
+    def test_success_order_login_user(self, driver):
+        main_page = MainPage(driver)
+        main_page.open_start_window()
+        main_page.click_personal_account_button()
+        personal_page = PersonalAccountPage(driver)
+        personal_page.fill_field_email(data.email)
+        personal_page.fill_field_password(data.password)
+        personal_page.click_enter_button()
+        main_page = MainPage(driver)
+        main_page.open_start_window()
+        main_page.close_modal_if_open()
+        main_page.add_bun_to_order_busket()
+        main_page.close_modal_if_open()
+        main_page.wait_and_click_element(MainPageLocators.BUTTON_ORDER)
+        assert main_page.wait_and_find_element(MainPageLocators.TITLE_CONFIRM_ORDER).text == 'Ваш заказ начали готовить'
+
+
 
 
 

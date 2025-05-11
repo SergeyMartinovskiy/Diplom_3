@@ -14,6 +14,8 @@ class MainPageLocators:
 
     ORDER_BUSKET =(By.XPATH, './/ul[contains(@class, "BurgerConstructor_basket__list__l9dp_")]')
     COUNT_FLUOR_BUN_AFTER_ADD = (By.XPATH, "//p[normalize-space()='2']")
+    BUTTON_ORDER = (By.XPATH, "//button[contains(text(),'Оформить заказ')]")
+    TITLE_CONFIRM_ORDER = (By.XPATH, "//p[text()='Ваш заказ начали готовить']")
 
 
 
