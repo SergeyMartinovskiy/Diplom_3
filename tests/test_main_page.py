@@ -32,4 +32,26 @@ class TestMainPageFunction:
         main_page.close_modal_if_open()
         assert main_page.wait_and_find_element(MainPageLocators.DETAILS_INGREDIENT).text == 'Детали ингредиента'
 
+    @allure.title('Проверка возможности закрытия всплывающего окна с деталями ингредиентов при клике на ингредиент')
+    def test_close_pop_up_window_ingredient_details(self, driver):
+        main_page = MainPage(driver)
+        main_page.open_start_window()
+        main_page.close_modal_if_open()
+        main_page.wait_and_click_element(MainPageLocators.FLUOR_BUN_BUTTON)
+        main_page.close_modal_if_open()
+        main_page.wait_and_click_element(MainPageLocators.X_BUTTON_POP_UP_WINDOW_DET_INGRED)
+        assert main_page.wait_and_find_element(MainPageLocators.TITLE_MAIN_PAGE).text == 'Соберите бургер'
+
+    @allure.title('Проверка увеличекния счетчика ингредиента при добавлении его в заказ')
+    def test_increase_counter_inredient_when_add_ingredient(self, driver):
+        main_page = MainPage(driver)
+        main_page.open_start_window()
+        main_page.close_modal_if_open()
+        main_page.add_bun_to_order_busket()
+
+        assert main_page.wait_and_find_element(MainPageLocators.COUNT_FLUOR_BUN_AFTER_ADD).text == '2'
+
+
+
+
 
