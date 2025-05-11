@@ -26,7 +26,14 @@ class MainPage(BasePage):
         action_chains = ActionChains(self.driver)
         action_chains.click_and_hold(bun_element).pause(1).move_to_element(basket_element).pause(1).release().perform()
 
+    @allure.step("Получить номер оформленного заказа")
+    def get_new_order_number(self):
+        new_order_number_element = self.wait_and_find_element(MainPageLocators.NUMBER_NEW_ORDER)
+        initial_text = new_order_number_element.text
 
+        self.wait_for_text_change(new_order_number_element, initial_text)
+
+        return int(new_order_number_element.text)
 
 
 

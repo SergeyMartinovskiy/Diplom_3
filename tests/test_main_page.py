@@ -4,6 +4,7 @@ from pages.main_page import MainPage
 from locators.main_page_locators import MainPageLocators
 from pages.personal_account_page import PersonalAccountPage
 from locators.personal_account_page_locators import PersonalAccountPageLocators
+
 import data
 
 class TestMainPageFunction:
