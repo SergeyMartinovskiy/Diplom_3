@@ -22,8 +22,8 @@ class TestOrderFeed:
         order_feed_page.close_modal_if_open()
         assert order_feed_page.wait_and_find_element(OrderFeedLocators.COMPOSITION_BURGER).text == 'Cостав'
 
-    @allure.title('Проверка отображения заказа пользователя из раздела История '
-                  'заказов отображаются на странице Лента заказов')
+    @allure.title('Проверка отображения заказа пользователя из раздела История заказов'
+                  'отображаются на странице Лента заказов')
     def test_appearance_order_in_list_order(self,driver):
         main_page = MainPage(driver)
         personal_page = PersonalAccountPage(driver)
@@ -75,7 +75,7 @@ class TestOrderFeed:
         main_page.close_modal_if_open()
         main_page.wait_and_click_element(MainPageLocators.ORDERED_FEED_BUTTON)
 
-        number_order_in_work = order_feed.get_number_order_in_works()
+        number_order_in_work = str(order_feed.get_number_order_in_works())
 
         assert order_number == number_order_in_work
 
