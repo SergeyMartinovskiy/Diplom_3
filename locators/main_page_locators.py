@@ -20,5 +20,8 @@ class MainPageLocators:
     ORDER_HISTORY_BUTTON = (By.XPATH, "//a[contains(text(),'История заказов')]")
     NUMBER_ORDER_IN_HISTORY = (By.XPATH, "//p[@class = text text_type_digits-default")
 
+    X_BUTTON_POP_WINDOW_ORDER = (By.XPATH, "//button[@type='button']//*[name()='svg']")
+    NUMBER_NEW_ORDER = (By.XPATH, "//h2[contains(@class, 'Modal_modal__title_shadow__3ikwq Modal_modal__title__2L34m text text_type_digits-large mb-8')]")
+
 
 

@@ -38,4 +38,19 @@ class MainPage(BasePage):
         password = user_response["password"]
         return password
 
+    @allure.step("Кликнуть по кнопке закрытия всплывающего окна")
+    def click_order_card_x_button(self):
+        x_button = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable(MainPageLocators.X_BUTTON_POP_WINDOW_ORDER)
+        )
+        x_button.click()
+
+    @allure.step("Получить номер созданного заказа и закрыть окно")
+    def get_order_number_and_close(self, timeout=15):
+            order_number = WebDriverWait(self.driver, timeout).until(
+                EC.visibility_of_element_located(MainPageLocators.NUMBER_NEW_ORDER)
+            ).text.strip()
+            self.click_order_card_x_button()
+            return order_number
+
 

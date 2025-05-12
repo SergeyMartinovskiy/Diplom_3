@@ -36,3 +36,6 @@ class BasePage:
         current_url = self.driver.current_url
         return current_url == expected_url
 
+    def click_to_element(self, locator):
+        self.driver.execute_script("arguments[0].click();", locator)
+
