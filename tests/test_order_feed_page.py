@@ -23,37 +23,42 @@ class TestOrderFeed:
         assert order_feed_page.wait_and_find_element(OrderFeedLocators.COMPOSITION_BURGER).text == 'Cостав'
 
     @allure.title('Проверка отображения заказа пользователя из раздела История заказов'
-                  'отображаются на странице Лента заказов')
+                  'отображаются на странице Лента заказов. ПОКА НЕ ИДЁТ')
     def test_appearance_order_in_list_order(self,driver):
         main_page = MainPage(driver)
         personal_page = PersonalAccountPage(driver)
         order_feed = OrderFeed(driver)
-
         main_page.open_start_window()
         main_page.click_personal_account_button()
-        personal_page.fill_field_email(data.email)
-        personal_page.fill_field_password(data.password)
+        personal_page.wait_and_click_element(PersonalAccountPageLocators.REGISTRATION_BUTTON)
+        main_page.close_modal_if_open()
+        reg_name = data.gen_name()
+        reg_email = data.gen_email()
+        reg_password = data.gen_password()
+        personal_page.fill_field_reg_name(reg_name)
+        personal_page.fill_field_reg_email(reg_email)
+        personal_page.fill_field_reg_password(reg_password)
+        personal_page.wait_and_click_element(PersonalAccountPageLocators.REGISTRATION_BTN)
+        main_page.close_modal_if_open()
+        personal_page.fill_field_email(reg_email)
+        personal_page.fill_field_password(reg_password)
         personal_page.click_enter_button()
-
         main_page.add_bun_to_order_busket()
         main_page.close_modal_if_open()
         main_page.wait_and_click_element(MainPageLocators.BUTTON_ORDER)
-
         main_page.close_modal_if_open()
-        order_number = main_page.get_order_number_and_close()
-
+        main_page.get_order_number_and_close()
+        main_page.close_modal_if_open()
         main_page.wait_and_click_element(MainPageLocators.PERSONAL_ACCOUNT_BUTTON)
         main_page.wait_and_click_element(MainPageLocators.ORDER_HISTORY_BUTTON)
-
-        history_number = personal_page.wait_and_find_element(PersonalAccountPageLocators.ORDER_NUMBER_IN_HISTORY).text()
-
+        history_number = personal_page.get_order_number()
+        main_page.close_modal_if_open()
         main_page.wait_and_click_element(MainPageLocators.ORDERED_FEED_BUTTON)
+        main_page.close_modal_if_open()
+        order_number_in_list = str(order_feed.get_order_number())
+        assert history_number == order_number_in_list
 
-        order_number_in_list = order_feed.wait_and_find_element(OrderFeedLocators.ORDER_HISTORY_IN_lIST).text()
-        assert history_number in order_number_in_list
-
-
-    @allure.title('Проверка появления номера оформленного заказа в Работе ')
+    @allure.title('Проверка появления номера оформленного заказа в Работе')
     def test_check_number_order_in_field_in_work(self, driver):
         main_page = MainPage(driver)
         personal_page = PersonalAccountPage(driver)
@@ -76,6 +81,74 @@ class TestOrderFeed:
         main_page.wait_and_click_element(MainPageLocators.ORDERED_FEED_BUTTON)
 
         number_order_in_work = str(order_feed.get_number_order_in_works())
-
         assert order_number == number_order_in_work
+
+
+    @allure.title('Проверка увеличения счетчика Выполнено за все время '
+                  ' при выполнении нового заказа')
+    def test_increase_count_alltime_orders_when_make_order(self, driver):
+        main_page = MainPage(driver)
+        personal_page = PersonalAccountPage(driver)
+        order_feed = OrderFeed(driver)
+
+        main_page.open_start_window()
+        main_page.click_personal_account_button()
+        personal_page.fill_field_email(data.email)
+        personal_page.fill_field_password(data.password)
+        personal_page.click_enter_button()
+
+        main_page.wait_and_click_element(MainPageLocators.ORDERED_FEED_BUTTON)
+        main_page.close_modal_if_open()
+        count_before_order = order_feed.get_orders_counter()
+
+        main_page.wait_and_click_element(MainPageLocators.CONSTRUCTOR_BUTTON)
+        main_page.close_modal_if_open()
+
+        main_page.add_bun_to_order_busket()
+        main_page.close_modal_if_open()
+        main_page.wait_and_click_element(MainPageLocators.BUTTON_ORDER)
+
+        main_page.close_modal_if_open()
+        main_page.get_order_number_and_close()
+
+        main_page.close_modal_if_open()
+        main_page.wait_and_click_element(MainPageLocators.ORDERED_FEED_BUTTON)
+
+        count_after_order = order_feed.get_orders_counter()
+        assert (count_after_order - count_before_order) == 1
+
+
+
+    @allure.title('Проверка увеличения счетчика Выполнено за сегодня '
+                  ' при выполнении нового заказа')
+    def test_increase_count_today_orders_when_make_order(self, driver):
+        main_page = MainPage(driver)
+        personal_page = PersonalAccountPage(driver)
+        order_feed = OrderFeed(driver)
+
+        main_page.open_start_window()
+        main_page.click_personal_account_button()
+        personal_page.fill_field_email(data.email)
+        personal_page.fill_field_password(data.password)
+        personal_page.click_enter_button()
+
+        main_page.wait_and_click_element(MainPageLocators.ORDERED_FEED_BUTTON)
+        main_page.close_modal_if_open()
+        count_before_order = order_feed.get_orders_counter_today()
+
+        main_page.wait_and_click_element(MainPageLocators.CONSTRUCTOR_BUTTON)
+        main_page.close_modal_if_open()
+
+        main_page.add_bun_to_order_busket()
+        main_page.close_modal_if_open()
+        main_page.wait_and_click_element(MainPageLocators.BUTTON_ORDER)
+
+        main_page.close_modal_if_open()
+        main_page.get_order_number_and_close()
+
+        main_page.close_modal_if_open()
+        main_page.wait_and_click_element(MainPageLocators.ORDERED_FEED_BUTTON)
+
+        count_after_order = order_feed.get_orders_counter_today()
+        assert (count_after_order - count_before_order) == 1
 

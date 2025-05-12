@@ -11,18 +11,20 @@ import random
 def gen_email():
     login_email = ''
     domain_email = random.choice(['yandex.ru', 'mail.ru'])
-    for _ in range (6):
+    for _ in range(6):
         login_email += random.choice('abcdefghjiklmnopqrstuvwxyz1234567890')
-    random_email= f"{login_email}@{domain_email}"
+    random_email = f"{login_email}@{domain_email}"
     return random_email
 
-def gen_name(lenght = 8):
-    random_name = random.choice('abcdefghjiklmnopqrstuvwxyz')
-    return random_name(lenght)
+def gen_name():
+    random_name = ''.join(
+        random.choice('abcdefghjiklmnopqrstuvwxyz') for _ in range(8))
+    return random_name
 
-def gen_password(lenght=4):
-    random_password = random.choice('abcdefghjiklmnopqrstuvwxyz')
-    return random_password(lenght)
+def gen_password():
+    random_password = ''.join(
+        random.choice('abcdefghjiklmnopqrstuvwxyz1234567890') for _ in range(6))
+    return random_password
 
 def gen_user_data():
     user_data = {'email': gen_email(),

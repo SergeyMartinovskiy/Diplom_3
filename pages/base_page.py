@@ -20,7 +20,7 @@ class BasePage:
         element.click()
 
     def wait_and_click_element(self, locator):
-        element = WebDriverWait(self.driver, 15).until(ec.element_to_be_clickable(locator))
+        element = WebDriverWait(self.driver, 20).until(ec.element_to_be_clickable(locator))
         element.click()
 
     def close_modal_if_open(self):

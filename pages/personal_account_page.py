@@ -38,4 +38,21 @@ class PersonalAccountPage(BasePage):
     def click_recovery_password_button(self):
         self.wait_and_find_element(PersonalAccountPageLocators.RECOVERY_PASSWORD_BUTTON).click()
 
+    @allure.step("Получить номер последнего заказа")
+    def get_order_number(self):
+        element = self.wait_and_find_element(PersonalAccountPageLocators.ORDER_NUMBER_IN_HISTORY)
+        return element.text
+
+    @allure.title('Заполнение поля email для регистрации')
+    def fill_field_reg_email(self, email):
+        self.wait_and_find_element(PersonalAccountPageLocators.REGISTRATION_EMAIL).send_keys(email)
+
+    @allure.title('Заполнение поля Пароль для регистрации')
+    def fill_field_reg_password(self, password):
+        self.wait_and_find_element(PersonalAccountPageLocators.REGISTRATION_PASSWORD).send_keys(password)
+
+    @allure.title('Заполнение поля имя для регистрации')
+    def fill_field_reg_name(self, name):
+        self.wait_and_find_element(PersonalAccountPageLocators.REGISTRATION_NAME).send_keys(name)
+
 

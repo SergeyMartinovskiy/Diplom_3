@@ -13,3 +13,6 @@ class OrderFeedLocators:
     COMPOSITION_BURGER = (By.XPATH, '//p[contains(@class, "text_type_main-medium") and contains(@class, "mb-8")][1]')
 
     ORDER_HISTORY_IN_lIST = (By.XPATH, "//ul[contains(@class, 'OrderFeed_list__OLh59']")
+    ORDER_COUNTER = (By.XPATH, "(.//p[contains(@class, 'OrderFeed_number__2MbrQ text text_type_digits-large')])[1]")
+    ORDER_COUNTER_TODAY = (By.XPATH, "(//p[contains(@class, 'OrderFeed_number__2MbrQ')])[2]")
+
