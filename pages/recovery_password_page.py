@@ -19,3 +19,10 @@ class RecoveryPasswordPage(BasePage):
     def click_to_show_hiding_passsword(self):
         self.wait_and_find_element(RecoveryPasswordPageLocators.EYE_BUTTON).click()
 
+    @allure.title('Получение заголовка страницы Восстановения пароля')
+    def title_recovery_password_page(self):
+        return self.wait_and_find_element(RecoveryPasswordPageLocators.TITLE_RECOVERY_PAGE).text
+
+    @allure.title('Получение типа в поле пароль (элементы скрытые глазиком)')
+    def get_type_in_password_field(self):
+        return self.wait_and_find_element(RecoveryPasswordPageLocators.NEW_PASSWORD_FIELD).get_attribute('type')
