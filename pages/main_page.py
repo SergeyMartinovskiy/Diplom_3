@@ -79,3 +79,11 @@ class MainPage(BasePage):
     @allure.title('Получение индекса добавленной ингредиента')
     def count_flour_bun_after_add_title(self):
         return self.wait_and_find_element(MainPageLocators.COUNT_FLUOR_BUN_AFTER_ADD).text
+
+    @allure.title('Нажать кнопку Заказать')
+    def click_button_order(self):
+        self.wait_and_click_element(MainPageLocators.BUTTON_ORDER)
+
+    @allure.title('Получение заголовка подтверждения приготовления заказа')
+    def confirm_order_title(self):
+        return self.wait_and_find_element(MainPageLocators.TITLE_CONFIRM_ORDER).text

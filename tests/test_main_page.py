@@ -51,19 +51,15 @@ class TestMainPageFunction:
     def test_success_order_login_user(self, driver):
         main_page = MainPage(driver)
         personal_page = PersonalAccountPage(driver)
-
         main_page.click_personal_account_button()
-
         personal_page.fill_field_email(data.email)
         personal_page.fill_field_password(data.password)
         personal_page.click_enter_button()
-
-
         main_page.close_modal_if_open()
         main_page.add_bun_to_order_busket()
         main_page.close_modal_if_open()
-        main_page.wait_and_click_element(MainPageLocators.BUTTON_ORDER)
-        assert main_page.wait_and_find_element(MainPageLocators.TITLE_CONFIRM_ORDER).text == 'Ваш заказ начали готовить'
+        main_page.click_button_order()
+        assert main_page.confirm_order_title() == 'Ваш заказ начали готовить'
 
 
 
