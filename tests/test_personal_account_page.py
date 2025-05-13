@@ -13,7 +13,7 @@ class TestPersonalAccountPage:
     @allure.title('Переход по клику на Личный кабинет')
     def test_click_button_transfer_to_personal_account(self, driver):
         main_page = MainPage(driver)
-        main_page.open_start_window()
+
         main_page.click_personal_account_button()
         main_page.close_modal_if_open()
         assert main_page.wait_and_find_element(PersonalAccountPageLocators.HEADING_PERSONAL_PAGE).text == 'Вход'
@@ -21,7 +21,7 @@ class TestPersonalAccountPage:
     @allure.title('Переход в Личный кабинет пользователя')
     def test_click_button_transfer_to_personal_account(self, driver):
         main_page = MainPage(driver)
-        main_page.open_start_window()
+
         main_page.click_personal_account_button()
         personal_page = PersonalAccountPage(driver)
         personal_page.fill_field_email(data.email)
@@ -35,7 +35,7 @@ class TestPersonalAccountPage:
     @allure.title('Выход по клику из Личного кабинета')
     def test_click_exit_button_from_personal_account(self, driver):
         main_page = MainPage(driver)
-        main_page.open_start_window()
+
         main_page.click_personal_account_button()
         personal_page = PersonalAccountPage(driver)
         personal_page.fill_field_email(data.email)
@@ -50,7 +50,7 @@ class TestPersonalAccountPage:
     @allure.title('Проверка перехода в раздел История заказов')
     def test_click_transfer_history_order_in_personal_account(self, driver):
         main_page = MainPage(driver)
-        main_page.open_start_window()
+
         main_page.click_personal_account_button()
         personal_page = PersonalAccountPage(driver)
         personal_page.fill_field_email(data.email)

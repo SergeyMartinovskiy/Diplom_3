@@ -10,9 +10,6 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class MainPage(BasePage):
-    @allure.title('Открыть стартовую страницу Стелла Бургер')
-    def open_start_window(self):
-        pass
 
     @allure.title('Нажать на кнопку Личный кабинет в шапке страницы')
     def click_personal_account_button(self):

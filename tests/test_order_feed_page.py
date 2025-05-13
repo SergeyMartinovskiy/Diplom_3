@@ -15,7 +15,7 @@ class TestOrderFeed:
     @allure.title('Проверка всплывающего окна с деталями при клике на заказ')
     def test_open_details_about_order(self,driver):
         main_page = MainPage(driver)
-        main_page.open_start_window()
+
         main_page.wait_and_click_element(MainPageLocators.ORDERED_FEED_BUTTON)
         order_feed_page = OrderFeed(driver)
         order_feed_page.click_to_order_card()
@@ -28,7 +28,7 @@ class TestOrderFeed:
         main_page = MainPage(driver)
         personal_page = PersonalAccountPage(driver)
         order_feed = OrderFeed(driver)
-        main_page.open_start_window()
+
         main_page.click_personal_account_button()
         personal_page.wait_and_click_element(PersonalAccountPageLocators.REGISTRATION_BUTTON)
         main_page.close_modal_if_open()
@@ -64,7 +64,7 @@ class TestOrderFeed:
         personal_page = PersonalAccountPage(driver)
         order_feed = OrderFeed(driver)
 
-        main_page.open_start_window()
+
         main_page.click_personal_account_button()
         personal_page.fill_field_email(data.email)
         personal_page.fill_field_password(data.password)
@@ -91,7 +91,7 @@ class TestOrderFeed:
         personal_page = PersonalAccountPage(driver)
         order_feed = OrderFeed(driver)
 
-        main_page.open_start_window()
+
         main_page.click_personal_account_button()
         personal_page.fill_field_email(data.email)
         personal_page.fill_field_password(data.password)
@@ -126,7 +126,7 @@ class TestOrderFeed:
         personal_page = PersonalAccountPage(driver)
         order_feed = OrderFeed(driver)
 
-        main_page.open_start_window()
+
         main_page.click_personal_account_button()
         personal_page.fill_field_email(data.email)
         personal_page.fill_field_password(data.password)

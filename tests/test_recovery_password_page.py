@@ -10,7 +10,7 @@ class TestRecoveryPasswordPage:
                   'по кнопке Восстановить пароль')
     def test_success_go_to_page_recovery_password(self, driver):
         main_page = MainPage(driver)
-        main_page.open_start_window()
+
         main_page.click_personal_account_button()
         account_page = PersonalAccountPage(driver)
         account_page.click_recovery_password_button()
@@ -21,7 +21,7 @@ class TestRecoveryPasswordPage:
                   'ввод почты и клик по кнопке Восстановить')
     def test_transfer_enter_email_and_click_recovery_button(self, driver):
         main_page = MainPage(driver)
-        main_page.open_start_window()
+
         main_page.click_personal_account_button()
         account_page = PersonalAccountPage(driver)
         account_page.click_recovery_password_button()
@@ -34,7 +34,7 @@ class TestRecoveryPasswordPage:
                   'скрытым/открытым на странице Восстановления пароля')
     def test_click_eye_button_to_open_password(self, driver):
         main_page = MainPage(driver)
-        main_page.open_start_window()
+
         main_page.click_personal_account_button()
         account_page = PersonalAccountPage(driver)
         account_page.click_recovery_password_button()
