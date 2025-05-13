@@ -43,6 +43,10 @@ class PersonalAccountPage(BasePage):
         element = self.wait_and_find_element(PersonalAccountPageLocators.ORDER_NUMBER_IN_HISTORY)
         return element.text
 
+    @allure.title('Прожать кнопку Зарегистрироваться на странице Регистрация')
+    def click_reg_button_in_reg_new_account(self):
+        self.wait_and_click_element(PersonalAccountPageLocators.REGISTRATION_BTN)
+
     @allure.title('Заполнение поля email для регистрации')
     def fill_field_reg_email(self, email):
         self.wait_and_find_element(PersonalAccountPageLocators.REGISTRATION_EMAIL).send_keys(email)
@@ -63,4 +67,6 @@ class PersonalAccountPage(BasePage):
     def title_in_personal_account(self):
         return self.wait_and_find_element(PersonalAccountPageLocators.TEXT_IN_PERSONAL_ACCOUNT).text
 
-    #@allure.title('')
+    @allure.title('Нажать на кнопку Зарегистрироваться')
+    def click_registration_button(self):
+        self.wait_and_click_element(PersonalAccountPageLocators.REGISTRATION_BUTTON)

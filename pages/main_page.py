@@ -87,3 +87,7 @@ class MainPage(BasePage):
     @allure.title('Получение заголовка подтверждения приготовления заказа')
     def confirm_order_title(self):
         return self.wait_and_find_element(MainPageLocators.TITLE_CONFIRM_ORDER).text
+
+    @allure.title('Нажать на кнопку история заказов')
+    def click_order_history_button(self):
+        self.wait_and_click_element(MainPageLocators.ORDER_HISTORY_BUTTON)

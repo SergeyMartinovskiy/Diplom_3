@@ -15,22 +15,20 @@ class TestOrderFeed:
     @allure.title('Проверка всплывающего окна с деталями при клике на заказ')
     def test_open_details_about_order(self,driver):
         main_page = MainPage(driver)
-
-        main_page.wait_and_click_element(MainPageLocators.ORDERED_FEED_BUTTON)
         order_feed_page = OrderFeed(driver)
+        main_page.click_button_order_feed()
         order_feed_page.click_to_order_card()
-        order_feed_page.close_modal_if_open()
-        assert order_feed_page.wait_and_find_element(OrderFeedLocators.COMPOSITION_BURGER).text == 'Cостав'
+        main_page.close_modal_if_open()
+        assert order_feed_page.title_detail_order() == 'Cостав'
 
     @allure.title('Проверка отображения заказа пользователя из раздела История заказов'
-                  'отображаются на странице Лента заказов. ПОКА НЕ ИДЁТ')
+                  'отображаются на странице Лента заказов.')
     def test_appearance_order_in_list_order(self,driver):
         main_page = MainPage(driver)
         personal_page = PersonalAccountPage(driver)
         order_feed = OrderFeed(driver)
-
         main_page.click_personal_account_button()
-        personal_page.wait_and_click_element(PersonalAccountPageLocators.REGISTRATION_BUTTON)
+        personal_page.click_registration_button()
         main_page.close_modal_if_open()
         reg_name = data.gen_name()
         reg_email = data.gen_email()
@@ -38,22 +36,22 @@ class TestOrderFeed:
         personal_page.fill_field_reg_name(reg_name)
         personal_page.fill_field_reg_email(reg_email)
         personal_page.fill_field_reg_password(reg_password)
-        personal_page.wait_and_click_element(PersonalAccountPageLocators.REGISTRATION_BTN)
+        personal_page.click_reg_button_in_reg_new_account()
         main_page.close_modal_if_open()
         personal_page.fill_field_email(reg_email)
         personal_page.fill_field_password(reg_password)
         personal_page.click_enter_button()
         main_page.add_bun_to_order_busket()
         main_page.close_modal_if_open()
-        main_page.wait_and_click_element(MainPageLocators.BUTTON_ORDER)
+        main_page.click_button_order()
         main_page.close_modal_if_open()
         main_page.get_order_number_and_close()
         main_page.close_modal_if_open()
-        main_page.wait_and_click_element(MainPageLocators.PERSONAL_ACCOUNT_BUTTON)
-        main_page.wait_and_click_element(MainPageLocators.ORDER_HISTORY_BUTTON)
+        main_page.click_personal_account_button()
+        main_page.click_order_history_button()
         history_number = personal_page.get_order_number()
         main_page.close_modal_if_open()
-        main_page.wait_and_click_element(MainPageLocators.ORDERED_FEED_BUTTON)
+        main_page.click_button_order_feed()
         main_page.close_modal_if_open()
         order_number_in_list = str(order_feed.get_order_number())
         assert history_number == order_number_in_list
@@ -63,23 +61,17 @@ class TestOrderFeed:
         main_page = MainPage(driver)
         personal_page = PersonalAccountPage(driver)
         order_feed = OrderFeed(driver)
-
-
         main_page.click_personal_account_button()
         personal_page.fill_field_email(data.email)
         personal_page.fill_field_password(data.password)
         personal_page.click_enter_button()
-
         main_page.add_bun_to_order_busket()
         main_page.close_modal_if_open()
-        main_page.wait_and_click_element(MainPageLocators.BUTTON_ORDER)
-
+        main_page.click_button_order()
         main_page.close_modal_if_open()
         order_number = main_page.get_order_number_and_close()
-
         main_page.close_modal_if_open()
-        main_page.wait_and_click_element(MainPageLocators.ORDERED_FEED_BUTTON)
-
+        main_page.click_button_order_feed()
         number_order_in_work = str(order_feed.get_number_order_in_works())
         assert order_number == number_order_in_work
 
@@ -90,33 +82,24 @@ class TestOrderFeed:
         main_page = MainPage(driver)
         personal_page = PersonalAccountPage(driver)
         order_feed = OrderFeed(driver)
-
-
         main_page.click_personal_account_button()
         personal_page.fill_field_email(data.email)
         personal_page.fill_field_password(data.password)
         personal_page.click_enter_button()
-
-        main_page.wait_and_click_element(MainPageLocators.ORDERED_FEED_BUTTON)
+        main_page.click_button_order_feed()
         main_page.close_modal_if_open()
         count_before_order = order_feed.get_orders_counter()
-
-        main_page.wait_and_click_element(MainPageLocators.CONSTRUCTOR_BUTTON)
+        main_page.click_button_constructor()
         main_page.close_modal_if_open()
-
         main_page.add_bun_to_order_busket()
         main_page.close_modal_if_open()
-        main_page.wait_and_click_element(MainPageLocators.BUTTON_ORDER)
-
+        main_page.click_button_order()
         main_page.close_modal_if_open()
         main_page.get_order_number_and_close()
-
         main_page.close_modal_if_open()
-        main_page.wait_and_click_element(MainPageLocators.ORDERED_FEED_BUTTON)
-
+        main_page.click_button_order_feed()
         count_after_order = order_feed.get_orders_counter()
         assert (count_after_order - count_before_order) == 1
-
 
 
     @allure.title('Проверка увеличения счетчика Выполнено за сегодня '
@@ -125,30 +108,22 @@ class TestOrderFeed:
         main_page = MainPage(driver)
         personal_page = PersonalAccountPage(driver)
         order_feed = OrderFeed(driver)
-
-
         main_page.click_personal_account_button()
         personal_page.fill_field_email(data.email)
         personal_page.fill_field_password(data.password)
         personal_page.click_enter_button()
-
-        main_page.wait_and_click_element(MainPageLocators.ORDERED_FEED_BUTTON)
+        main_page.click_button_order_feed()
         main_page.close_modal_if_open()
         count_before_order = order_feed.get_orders_counter_today()
-
-        main_page.wait_and_click_element(MainPageLocators.CONSTRUCTOR_BUTTON)
+        main_page.click_button_constructor()
         main_page.close_modal_if_open()
-
         main_page.add_bun_to_order_busket()
         main_page.close_modal_if_open()
-        main_page.wait_and_click_element(MainPageLocators.BUTTON_ORDER)
-
+        main_page.click_button_order()
         main_page.close_modal_if_open()
         main_page.get_order_number_and_close()
-
         main_page.close_modal_if_open()
-        main_page.wait_and_click_element(MainPageLocators.ORDERED_FEED_BUTTON)
-
+        main_page.click_button_order_feed()
         count_after_order = order_feed.get_orders_counter_today()
         assert (count_after_order - count_before_order) == 1
 

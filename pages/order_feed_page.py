@@ -43,6 +43,10 @@ class OrderFeed(BasePage):
         number = self.wait_and_find_element(OrderFeedLocators.ORDER_COUNTER_TODAY)
         return int(number.text)
 
+    @allure.title('Получение текста заголовка окна с деталями заказа')
+    def title_detail_order(self):
+        return self.wait_and_find_element(OrderFeedLocators.COMPOSITION_BURGER).text
+
 
 
 
