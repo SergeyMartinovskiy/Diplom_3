@@ -55,4 +55,12 @@ class PersonalAccountPage(BasePage):
     def fill_field_reg_name(self, name):
         self.wait_and_find_element(PersonalAccountPageLocators.REGISTRATION_NAME).send_keys(name)
 
+    @allure.title('Получение заголовка Личного кабинета (Вход)')
+    def title_enter_personal_account(self):
+        return self.wait_and_find_element(PersonalAccountPageLocators.HEADING_PERSONAL_PAGE).text
 
+    @allure.title('Получение заголовка в Личном кабиете')
+    def title_in_personal_account(self):
+        return self.wait_and_find_element(PersonalAccountPageLocators.TEXT_IN_PERSONAL_ACCOUNT).text
+
+    #@allure.title('')
