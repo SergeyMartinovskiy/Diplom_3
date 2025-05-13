@@ -23,5 +23,7 @@ class MainPageLocators:
     X_BUTTON_POP_WINDOW_ORDER = (By.XPATH, "//button[@type='button']//*[name()='svg']")
     NUMBER_NEW_ORDER = (By.XPATH, "//h2[contains(@class, 'Modal_modal__title_shadow__3ikwq Modal_modal__title__2L34m text text_type_digits-large mb-8')]")
 
+    MODAL_CLOSE_BUTTON = (By.CSS_SELECTOR, 'selector_for_close_button')
+
 
 

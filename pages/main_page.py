@@ -7,6 +7,7 @@ from locators.main_page_locators import MainPageLocators
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common import TimeoutException
 
 
 class MainPage(BasePage):
@@ -50,4 +51,6 @@ class MainPage(BasePage):
             self.click_order_card_x_button()
             return order_number
 
-
+    @allure.title('Закрыть модальное окно, если оно открыто')
+    def close_modal_if_open(self):
+        super().close_modal_if_open(MainPageLocators.MODAL_CLOSE_BUTTON)

@@ -23,10 +23,11 @@ class BasePage:
         element = WebDriverWait(self.driver, 20).until(ec.element_to_be_clickable(locator))
         element.click()
 
-    def close_modal_if_open(self):
+
+    def close_modal_if_open(self, locator):
         try:
             modal_close_button = WebDriverWait(self.driver, 5).until(
-                ec.element_to_be_clickable((By.CSS_SELECTOR, "selector_for_close_button"))
+                ec.element_to_be_clickable(locator)
             )
             modal_close_button.click()
         except TimeoutException:
